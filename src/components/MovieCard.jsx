@@ -19,11 +19,10 @@ function MovieCard({ movie }) {
 
 				<div className="movie-title">
 					<h3>{movie.title}</h3>
-					<p>{releaseYear}</p>
 				</div>
 			</Link>
 		</div>
 	);
-};
+}
 
 export default MovieCard;

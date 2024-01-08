@@ -1,9 +1,9 @@
-import "../styles/Home.css";
-import MovieCard from "../components/MovieCard";
 import { useState, useEffect } from "react";
-import { fetchMovies } from "../api";
+import { fetchMovies, searchMovies } from "../api";
 import { useLoaderData } from "react-router-dom";
 import MovieSection from "../components/MoiveSection";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 export async function loader() {
 	const topRatedURL = "https://api.themoviedb.org/3/movie/top_rated?";
@@ -23,21 +23,53 @@ export async function loader() {
 }
 
 function Home() {
+	const [searchTerm, setSearchTerm] = useState("");
+	const [searchResults, setSearchResults] = useState([]);
+
 	const { topRatedMovies, mostPopularMovies, upcomingMovies } = useLoaderData();
+
+	const handleEnterKeyPress = async (e) => {
+		if (e.key === "Enter") {
+			const results = await searchMovies(searchTerm);
+			setSearchResults(results);
+			console.log("ovo je search results", searchResults);
+		}
+	};
 
 	return (
 		<div className="home">
-			<div>
-				<MovieSection movies={topRatedMovies} sectionType="Top rated" />
+			<div className="search">
+				<input
+					type="text"
+					placeholder="Search for movies..."
+					value={searchTerm}
+					onChange={(e) => setSearchTerm(e.target.value)}
+					onKeyUp={handleEnterKeyPress}
+				/>
+				<FontAwesomeIcon icon={faMagnifyingGlass} />
 			</div>
+			{searchResults.length > 0 ? (
+				<div>
+					<MovieSection movies={searchResults} sectionType="Results: " />
+				</div>
+			) : (
+				<>
+					<div>
+						<MovieSection movies={topRatedMovies} sectionType="Top rated" />
+					</div>
 
-			<div>
-				<MovieSection movies={mostPopularMovies} sectionType="Most popular" />
-			</div>
+					<div>
+						<MovieSection
+							movies={mostPopularMovies}
+							sectionType="Most popular"
+						/>
+					</div>
 
-			<div>
-				<MovieSection movies={upcomingMovies} sectionType="Upcoming" />
-			</div>
+					<div>
+						<MovieSection movies={upcomingMovies} sectionType="Upcoming" />
+					</div>
+				</>
+			)}
 		</div>
 	);
 }

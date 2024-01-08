@@ -13,3 +13,25 @@ export async function fetchMovies(url) {
 
 	return data.results;
 }
+
+export async function detailMovie(id) {
+	const response = await fetch(
+		`https://api.themoviedb.org/3/movie/${id}?`,
+		options
+	);
+	const data = await response.json();
+	console.log(data);
+
+	return data;
+}
+
+export async function searchMovies(title) {
+	const response = await fetch(
+		`https://api.themoviedb.org/3/search/movie?query=${title}`,
+		options
+	);
+	const data = await response.json();
+	console.log("ovo je search", data.results);
+
+	return data.results;
+}

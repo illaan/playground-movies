@@ -10,6 +10,8 @@ import Layout from "./components/Layout";
 import MovieDetail from "./components/MovieDetail";
 import { loader as homeLoader } from "./pages/Home";
 import { loader as detailLoader } from "./components/MovieDetail";
+import { loader as searchLoader } from "./pages/Search";
+import Search from "./pages/Search";
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
@@ -19,6 +21,11 @@ const router = createBrowserRouter(
 				path="details/:id"
 				element={<MovieDetail />}
 				loader={detailLoader}
+			/>
+			<Route
+				path="results/:search"
+				element={<Search />}
+				loader={searchLoader}
 			/>
 		</Route>
 	)

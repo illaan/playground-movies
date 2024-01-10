@@ -1,6 +1,10 @@
 * {
 	box-sizing: border-box;
 }
+a {
+	text-decoration: unset;
+	color: unset;
+}
 
 html,
 body {
@@ -115,6 +119,7 @@ body::-webkit-scrollbar {
 .layout {
 	display: flex;
 	flex-direction: column;
+	min-height: 100vh;
 }
 
 .home {
@@ -171,4 +176,15 @@ body::-webkit-scrollbar {
 .movie-detail-info span {
 	display: flex;
 	align-items: last baseline;
+}
+
+.back-button {
+	padding-left: 2rem;
+	display: flex;
+	align-items: baseline;
+
+	& p {
+		color: aliceblue;
+		font-style: italic;
+	}
 }

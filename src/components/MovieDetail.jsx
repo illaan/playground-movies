@@ -18,7 +18,7 @@ function MovieDetail() {
 	const backgroundStyle = {
 		backgroundImage: `linear-gradient(rgba(50, 50, 50, 0.9), rgba(60, 60, 60, 0.9)), url(${imageBaseURL}${posterSize}${movie.poster_path})`,
 		backgroundSize: "cover",
-		height: "80vh", // Adjust the height as needed
+		height: "80vh",
 		display: "flex",
 		backgroundPosition: "center",
 	};

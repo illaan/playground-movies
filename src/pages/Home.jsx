@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
-import { fetchMovies, searchMovies } from "../api";
+import { useState } from "react";
+import { fetchMovies } from "../api";
 import { useLoaderData } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import MovieSection from "../components/MoiveSection";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
@@ -24,14 +25,14 @@ export async function loader() {
 
 function Home() {
 	const [searchTerm, setSearchTerm] = useState("");
-	const [searchResults, setSearchResults] = useState([]);
+	// const [searchResults, setSearchResults] = useState([]);
+	const navigate = useNavigate();
 
 	const { topRatedMovies, mostPopularMovies, upcomingMovies } = useLoaderData();
 
 	const handleEnterKeyPress = async (e) => {
 		if (e.key === "Enter") {
-			const results = await searchMovies(searchTerm);
-			setSearchResults(results);
+			navigate(`/results/${searchTerm}`);
 			console.log("ovo je search results", searchResults);
 		}
 	};
@@ -48,28 +49,18 @@ function Home() {
 				/>
 				<FontAwesomeIcon icon={faMagnifyingGlass} />
 			</div>
-			{searchResults.length > 0 ? (
-				<div>
-					<MovieSection movies={searchResults} sectionType="Results: " />
-				</div>
-			) : (
-				<>
-					<div>
-						<MovieSection movies={topRatedMovies} sectionType="Top rated" />
-					</div>
 
-					<div>
-						<MovieSection
-							movies={mostPopularMovies}
-							sectionType="Most popular"
-						/>
-					</div>
+			<div>
+				<MovieSection movies={topRatedMovies} sectionType="Top rated" />
+			</div>
 
-					<div>
-						<MovieSection movies={upcomingMovies} sectionType="Upcoming" />
-					</div>
-				</>
-			)}
+			<div>
+				<MovieSection movies={mostPopularMovies} sectionType="Most popular" />
+			</div>
+
+			<div>
+				<MovieSection movies={upcomingMovies} sectionType="Upcoming" />
+			</div>
 		</div>
 	);
 }

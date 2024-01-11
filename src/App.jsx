@@ -8,10 +8,11 @@ import {
 import Home from "./pages/Home";
 import Layout from "./components/Layout";
 import MovieDetail from "./components/MovieDetail";
+import Search from "./pages/Search";
+import LogIn from "./pages/Login";
 import { loader as homeLoader } from "./pages/Home";
 import { loader as detailLoader } from "./components/MovieDetail";
 import { loader as searchLoader } from "./pages/Search";
-import Search from "./pages/Search";
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
@@ -27,6 +28,7 @@ const router = createBrowserRouter(
 				element={<Search />}
 				loader={searchLoader}
 			/>
+			<Route path="login" element={<LogIn />} />
 		</Route>
 	)
 );

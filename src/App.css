@@ -97,6 +97,7 @@ body::-webkit-scrollbar {
 .header {
 	padding: 1rem;
 	display: flex;
+	flex-direction: column;
 }
 
 .header h1 {
@@ -120,6 +121,12 @@ body::-webkit-scrollbar {
 	display: flex;
 	flex-direction: column;
 	min-height: 100vh;
+	background-image: linear-gradient(
+			rgba(50, 50, 50, 0.3),
+			rgba(60, 60, 60, 0.3)
+		),
+		url("./assets/pexels-roberto-nickson-3131971.jpg");
+	background-size: cover;
 }
 
 .home {
@@ -187,4 +194,26 @@ body::-webkit-scrollbar {
 		color: aliceblue;
 		font-style: italic;
 	}
+}
+
+.navbar {
+	display: flex;
+	align-items: baseline;
+	margin-inline: 1.5rem;
+}
+
+.login-link {
+	display: flex;
+	flex-direction: row;
+	align-items: baseline;
+
+	& h3 {
+		color: white;
+	}
+}
+.login-icon {
+	max-height: 3rem;
+	border: solid white;
+	border-radius: 22px;
+	padding: 0.3rem;
 }

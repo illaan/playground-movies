@@ -1,7 +1,14 @@
+import { Link } from "react-router-dom";
+import NavBar from "./Navbar";
+
 function Header() {
 	return (
 		<header className="header">
-			<h1>MovieLand</h1>
+			<Link to="/">
+				<h1>MovieLand</h1>
+			</Link>
+
+			<NavBar />
 
 			{/* <nav>
 				<NavLink to="/">Home</NavLink>

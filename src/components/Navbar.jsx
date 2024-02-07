@@ -6,6 +6,7 @@ import { faMagnifyingGlass, faUser } from "@fortawesome/free-solid-svg-icons";
 function NavBar() {
 	const [searchTerm, setSearchTerm] = useState();
 	const navigate = useNavigate();
+	const isLoggedin = localStorage.getItem("loggedin");
 
 	const handleEnterKeyPress = async (e) => {
 		if (e.key === "Enter") {
@@ -26,9 +27,9 @@ function NavBar() {
 				/>
 				<FontAwesomeIcon icon={faMagnifyingGlass} />
 			</div>
-			<Link to="/login">
+			<Link to="/profile">
 				<div className="login-link">
-					<h3>Log in</h3>
+					{!isLoggedin && <h3>Sign in</h3>}
 					&nbsp;
 					<div className="login-icon">
 						<FontAwesomeIcon

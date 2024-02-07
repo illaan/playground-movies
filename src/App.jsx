@@ -10,9 +10,12 @@ import Layout from "./components/Layout";
 import MovieDetail from "./components/MovieDetail";
 import Search from "./pages/Search";
 import LogIn from "./pages/Login";
+import Profile from "./pages/Profile";
 import { loader as homeLoader } from "./pages/Home";
 import { loader as detailLoader } from "./components/MovieDetail";
 import { loader as searchLoader } from "./pages/Search";
+import { loader as profileLoader } from "./pages/Profile";
+import { action as loginAction } from "./pages/Login";
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
@@ -28,7 +31,8 @@ const router = createBrowserRouter(
 				element={<Search />}
 				loader={searchLoader}
 			/>
-			<Route path="login" element={<LogIn />} />
+			<Route path="login" element={<LogIn />} action={loginAction} />
+			<Route path="profile" element={<Profile />} loader={profileLoader} />
 		</Route>
 	)
 );

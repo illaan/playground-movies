@@ -1,7 +1,7 @@
-import { useLoaderData } from "react-router-dom";
-import { detailMovie } from "../api";
+import { useLoaderData, Link } from "react-router-dom";
+import { detailMovie, addToFavorites } from "../api";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faClock } from "@fortawesome/free-solid-svg-icons";
+import { faClock, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 export function loader({ params }) {
 	return detailMovie(params.id);
@@ -24,14 +24,28 @@ function MovieDetail() {
 	};
 
 	return (
-		<div className="detail-container">
-			<div className="movie-detail-page" style={backgroundStyle}>
-				<div className="movie-detail-image">
-					<img
-						src={`${imageBaseURL}${posterSize}${movie.poster_path}`}
-						alt={movie.title}
-					/>
+		<>
+			<Link to="..">
+				<div className="back-button">
+					<FontAwesomeIcon style={{ color: "aliceblue" }} icon={faArrowLeft} />
+					&nbsp;
+					<p>Back to home</p>
 				</div>
+			</Link>
+			<div className="movie-detail-page" style={backgroundStyle}>
+				<div className="movie-detail-container">
+					<div className="movie-detail-image">
+						<img
+							src={`${imageBaseURL}${posterSize}${movie.poster_path}`}
+							alt={movie.title}
+						/>
+					</div>
+					<div className="movie-detail-options">
+						<button onClick={addToFavorites}>Add to favorites</button>
+						<button>Add to watchlist</button>
+					</div>
+				</div>
+
 				<div className="movie-detail-info">
 					<span>
 						<h1>{movie.title}</h1>
@@ -51,8 +65,7 @@ function MovieDetail() {
 					<p>{movie.overview}</p>
 				</div>
 			</div>
-			<div style={{ display: "flex" }}>{}</div>
-		</div>
+		</>
 	);
 }
 

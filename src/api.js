@@ -1,3 +1,5 @@
+import { redirect } from "react-router-dom";
+
 const options = {
 	method: "GET",
 	headers: {
@@ -35,3 +37,52 @@ export async function searchMovies(title) {
 
 	return data.results;
 }
+
+export async function loginUser(creds) {
+	const res = await fetch("http://127.0.0.1:5000/login", {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify(creds),
+	});
+	const data = await res.json();
+
+	if (!res.ok) {
+		throw {
+			message: data.message,
+			statusText: res.statusText,
+			status: res.status,
+		};
+	}
+
+	return data;
+}
+
+export async function addToFavorites(creds) {
+	const res = fetch("http://localhost:5000/add_favorite", {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify(creds),
+	});
+	const data = await res.json();
+	if (!res.ok) {
+		throw {
+			message: data.message,
+			statusText: res.statusText,
+			status: res.status,
+		};
+	}
+	return data;
+}
+
+// export async function requireAuth() {
+// 	const isLoggedIn = localStorage.getItem("loggedin");
+
+// 	if (!isLoggedIn) {
+// 		throw redirect("/login");
+// 	}
+// 	return redirect("/profile");
+// }

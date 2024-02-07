@@ -1,8 +1,64 @@
-# React + Vite
+# Movieland Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project was created as part of a learning journey. My own work inspired by yt tutorial.
 
-Currently, two official plugins are available:
+## Introduction
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The "Movieland" project is an app developed using React and Flask. App where you can explore movies and series separated into different categories, search for movies, etc. It includes nested routes, protected routes, loaders, etc..
+
+## Features
+
+- Implementation of React Router for navigation.
+- Pages: Home, Login, and user profile.
+- Integration with Python and Flask for the backend.
+
+**Screenshots**
+![Screenshot of my app](./src/assets/screenshots/app1.png "Screenshot of My App")
+![Screenshot of my app](./src/assets/screenshots/app2.png "Screenshot of My App")
+![Screenshot of my app](./src/assets/screenshots/app3.png "Screenshot of My App")
+
+## Installation
+
+### Prerequisites
+
+Before you can run Movieland, ensure you have the following software and tools installed:
+
+- [Node.js](https://nodejs.org/) (for the frontend)
+- [Python](https://www.python.org/) (for the backend)
+- [Flask](https://flask.palletsprojects.com/en/2.0.x/) (Python web framework)
+- Git (optional, for version control and collaboration)
+
+### Setup
+
+1.  **Clone the repository.**
+
+    git clone https://github.com/illaan/playground-movieland
+
+2.  **Navigate to the Projcet Directories**
+
+After cloning the repository, you'll need to navigate to the frontend and backend directories to install their respective dependencies and run the servers. Here's how to do it:
+
+_Frontend Directory_:
+
+Open your terminal or command prompt and execute the following commands to navigate to the frontend directory:
+`cd movieland`
+
+_Backend Directory_:
+
+Navigate to the backend directory using the following commands:
+
+`cd movieland`
+`cd backend`
+
+3. **Install dependencies**
+
+In the movieland directory:
+`npm install`
+
+4. **Start the Servers**
+
+In the movieland-backend directory, start the backend server with the following command:
+`python app.py`
+
+In the movieland-frontend directory, start the frontend server with the following command:
+`npm run dev`

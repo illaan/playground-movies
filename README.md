@@ -32,7 +32,7 @@ Before you can run Movieland, ensure you have the following software and tools i
 
 1.  **Clone the repository.**
 
-    git clone https://github.com/illaan/playground-movieland
+    git clone https://github.com/illaan/playground-movies
 
 2.  **Navigate to the Projcet Directories**
 
